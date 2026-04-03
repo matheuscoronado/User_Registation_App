@@ -44,12 +44,4 @@ public class User {
     // Retorna o fone do usuário
     public String getPhone(){return phone;}
 
-
-    public void setName(String name) {this.name = name;}
-
-    public void setCpf(String cpf) {this.cpf = cpf;}
-
-    public void setEmail(String email) {this.email = email;}
-
-    public void setPhone(String phone) {this.phone = phone;}
 }
