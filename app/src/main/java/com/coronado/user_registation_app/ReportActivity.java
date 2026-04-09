@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
+import java.util.List;
 
 
 public class ReportActivity extends AppCompatActivity {
@@ -33,6 +34,18 @@ public class ReportActivity extends AppCompatActivity {
             threads separadas.
          */
         UserDatabase db = Room.databaseBuilder(getApplicationContext(), UserDatabase.class, "user-database").allowMainThreadQueries().builder();
+        // Obtém o objeto DAO ( Data Access Objects) que contém as queries SQL
+        UserDao userDao = db.userDao();
+        // Recupera todos os usuários salvos no BD e armazena em uma lista
+        List<User> userList = userDao.getAllUsers();
+        // StringBuilder: forma eficiente de contruir uma String longa dentro de um laço (loop)
+        StringBuilder report = new StringBuilder();
+        // Loop "for-each" para percorrer cada objeto User dentro da lista recuperada
+        for (User user : userList){
+            report.append("Nome: ").append(user.getName()).append("\n").append("CPF: ").append(user.getCpf()).append("\n\n");
+        }
+        // Exibe o relatorio final montado no TextView na tela
+        textViewReport.setText(report.toString());
     }
 
     // Metodo responsavel pela navegação entre as telas do app
