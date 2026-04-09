@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
 
 
 public class ReportActivity extends AppCompatActivity {
@@ -23,6 +24,15 @@ public class ReportActivity extends AppCompatActivity {
         Button btnVoltar = findViewById(R.id.btnVoltar);
         // O botão de retorno utilizando expressão lambda
         btnVoltar.setOnClickListener(v -> voltarParaCadastro());
+
+        /*
+            Conexão com o banco de dados
+            1 - Cria uma instância do banco "user-database"
+            2 - .allowMainThreadQueries():  Serve para liberar gerações de consulta feitas em
+            threads da UI. Por padrão , ROOM proibe isso, o correto seria fazer consultas em
+            threads separadas.
+         */
+        UserDatabase db = Room.databaseBuilder(getApplicationContext(), UserDatabase.class, "user-database").allowMainThreadQueries().builder();
     }
 
     // Metodo responsavel pela navegação entre as telas do app
