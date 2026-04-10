@@ -4,6 +4,7 @@ plugins {
 
 android {
     namespace = "com.coronado.user_registation_app"
+
     compileSdk {
         version = release(36) {
             minorApiLevel = 1
@@ -29,6 +30,7 @@ android {
             )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
@@ -36,20 +38,21 @@ android {
 }
 
 dependencies {
+    // Android básicas
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
     implementation(libs.constraintlayout)
-    implementation(libs.room.common.jvm)
+
+    // Room (banco de dados)
     implementation(libs.room.runtime)
+    implementation(libs.room.common.jvm)
+
+    // ✅ Processador de anotações (CORRETO)
+    annotationProcessor(libs.room.compiler)
+
+    // Testes
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
-    annotationProcessor(libs.room.compiler)
-
-    // Biblioteca principal
-    implementation("androidx.room:room-runtime:2.6.1")
-
-    // Processador de anotações do Room ( Necessário para gerar código automaticamente)
-    implementation("androidx.room:room-compiler:2.6.1")
 }
