@@ -33,7 +33,7 @@ public class ReportActivity extends AppCompatActivity {
             threads da UI. Por padrão , ROOM proibe isso, o correto seria fazer consultas em
             threads separadas.
          */
-        UserDatabase db = Room.databaseBuilder(getApplicationContext(), UserDatabase.class, "user-database").allowMainThreadQueries().builder();
+        UserDatabase db = Room.databaseBuilder(getApplicationContext(), UserDatabase.class, "user-database").allowMainThreadQueries().build();
         // Obtém o objeto DAO ( Data Access Objects) que contém as queries SQL
         UserDao userDao = db.userDao();
         // Recupera todos os usuários salvos no BD e armazena em uma lista
