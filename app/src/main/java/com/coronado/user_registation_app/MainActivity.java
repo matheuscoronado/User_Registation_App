@@ -18,7 +18,7 @@ import android.util.Log;
 // Classe principal da atividade de cadastro de usuários
 public class MainActivity extends AppCompatActivity {
     // Declaração dos campos de entrada de dados
-    private EditText editTextName, editTextCPF, editTextEmail, editTextPhone;
+    private EditText editTextName, editTextCPF, editTextEmail, editTextTelefone;
 
     // Objeto para interagir com o banco de dados (DAO)
     private UserDao userDao;
@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         editTextName = findViewById(R.id.editTextName);
         editTextCPF = findViewById(R.id.editTextCPF);
         editTextEmail = findViewById(R.id.editTextEmail);
-        editTextPhone = findViewById(R.id.editTextPhone);
+        editTextTelefone = findViewById(R.id.editTextTelefone);
 
         // Inicializa os botões do layout
         Button buttonSave = findViewById(R.id.buttonSave);
@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
             String name = editTextName.getText().toString();
             String cpf = editTextCPF.getText().toString();
             String email = editTextEmail.getText().toString();
-            String phone = editTextPhone.getText().toString();
+            String phone = editTextTelefone.getText().toString();
 
 
             // Verifica se os valores estão sendo capturados corretamente
